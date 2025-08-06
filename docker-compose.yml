@@ -1,0 +1,10 @@
+services:
+  vendasdb_container:
+    image: postgres
+    container_name: vendasdb_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "vendasdb"
+      POSTGRES_USER: "vendasdb"
+      POSTGRES_PASSWORD: "vendasdb"
