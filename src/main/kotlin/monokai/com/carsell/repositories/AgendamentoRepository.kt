@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AgendamentoRepository : JpaRepository<Agendamento, Long>{
     fun findAgendamentoByCarro_Id(id: Long): List<Agendamento>
+    fun findAgendamentoByCliente_Id(id: Long): List<Agendamento>
 }
