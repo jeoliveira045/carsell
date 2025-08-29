@@ -1,6 +1,7 @@
 package monokai.com.carsell.rest
 
 import monokai.com.carsell.domain.model.Agendamento
+import monokai.com.carsell.domain.model.email.Message
 import monokai.com.carsell.repositories.AgendamentoRepository
 import monokai.com.carsell.service.CriarAgendamentoService
 import org.springframework.http.ResponseEntity
@@ -47,5 +48,11 @@ class AgendamentoRest(
         } else {
             ResponseEntity.notFound().build()
         }
+    }
+
+    @PostMapping("/enviar-email")
+    fun enviarEmail(@RequestBody message: Message): ResponseEntity<Void>{
+        criarAgendamentoService.sendEmail(message.messageBody)
+        return ResponseEntity.noContent().build()
     }
 }

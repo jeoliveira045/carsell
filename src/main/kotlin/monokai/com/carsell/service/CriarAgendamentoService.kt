@@ -4,13 +4,21 @@ import monokai.com.carsell.domain.model.Agendamento
 import monokai.com.carsell.repositories.AgendamentoRepository
 import monokai.com.carsell.repositories.CarroRepository
 import org.springframework.stereotype.Service
+import software.amazon.awssdk.services.ses.SesClient
+import software.amazon.awssdk.services.ses.model.Body
+import software.amazon.awssdk.services.ses.model.Content
+import software.amazon.awssdk.services.ses.model.Destination
+import software.amazon.awssdk.services.ses.model.Message
+import software.amazon.awssdk.services.ses.model.SendEmailRequest
+import software.amazon.awssdk.services.ses.model.SesException
 import java.time.LocalDate
 import java.time.LocalTime
 
 @Service
 class CriarAgendamentoService(
     private val agendamentoRepository: AgendamentoRepository,
-    private val carroRepository: CarroRepository
+    private val carroRepository: CarroRepository,
+    private val sesClient: SesClient
 ) {
 
     fun exec(agendamento: Agendamento): Agendamento {
@@ -27,10 +35,46 @@ class CriarAgendamentoService(
         if(date.isBefore(LocalDate.now())) throw RuntimeException("O agendamento não pode ocorrer em uma data anterior a hoje.")
         if(time.hour - LocalTime.now().hour > 2) throw RuntimeException("O agendamento não pode ser em menos de 2 horas após sua marcação")
 
-
-
-
-
         return agendamentoRepository.save(agendamento)
+    }
+
+    fun sendEmail(body: String){
+        val from = "jifood12@gmail.com"
+        val to = "jean.mateus.1997@gmail.com"
+        val subject = "Assunto teste"
+
+        val destination = Destination.builder()
+            .toAddresses(to)
+            .build()
+
+        val subjectContent = Content.builder()
+            .data(subject)
+            .charset("UTF-8")
+            .build()
+
+        val bodyContent = Content.builder()
+            .data(body)
+            .charset("UTF-8")
+            .build()
+
+        val message = Message.builder()
+            .subject(subjectContent)
+            .body(Body.builder().text(bodyContent).build())
+            .build()
+
+        val request = SendEmailRequest.builder()
+            .source(from) // Precisa estar verificado no SES
+            .destination(destination)
+            .message(message)
+            .build()
+
+        try {
+            sesClient.sendEmail(request)
+            println("E-mail enviado com sucesso para $to")
+        } catch (ex: SesException) {
+            println("Erro ao enviar e-mail: ${ex.awsErrorDetails().errorMessage()}")
+            throw ex
+        }
+
     }
 }
