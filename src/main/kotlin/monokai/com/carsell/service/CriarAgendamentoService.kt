@@ -12,7 +12,9 @@ import software.amazon.awssdk.services.ses.model.Message
 import software.amazon.awssdk.services.ses.model.SendEmailRequest
 import software.amazon.awssdk.services.ses.model.SesException
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 @Service
 class CriarAgendamentoService(
@@ -35,13 +37,25 @@ class CriarAgendamentoService(
         if(date.isBefore(LocalDate.now())) throw RuntimeException("O agendamento não pode ocorrer em uma data anterior a hoje.")
         if(time.hour - LocalTime.now().hour > 2) throw RuntimeException("O agendamento não pode ser em menos de 2 horas após sua marcação")
 
+        var dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:SS")
+
+        sendEmail("""
+            Obrigado por confiar em nós, ${agendamento.cliente.nome} 
+            
+            Segue as informações do carro e do agendamento do test-drive:
+            
+            Modelo: ${agendamento.carro.modelo}
+            Cor: ${agendamento.carro.cor}
+            Data do agendamento: ${agendamento.dataHora.format(dateTimeFormatter)}
+        """.trimIndent())
+
         return agendamentoRepository.save(agendamento)
     }
 
     fun sendEmail(body: String){
         val from = "jifood12@gmail.com"
         val to = "jean.mateus.1997@gmail.com"
-        val subject = "Assunto teste"
+        val subject = "Agendamento de test-drive"
 
         val destination = Destination.builder()
             .toAddresses(to)
