@@ -38,6 +38,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("software.amazon.awssdk:ses:2.25.64")
+    implementation("com.sun.mail:jakarta.mail:2.0.1")
 }
 
 kotlin {

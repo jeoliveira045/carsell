@@ -25,7 +25,7 @@ class CriarAgendamentoService(
 
     fun exec(agendamento: Agendamento): Agendamento {
         val carro = carroRepository.findById(agendamento.carro.id!!)
-        val carroAgendadoList = agendamentoRepository.findAgendamentoByCarro_Id(agendamento.carro.id!!)
+        val carroAgendadoList = agendamentoRepository.findAgendamentoByCarro_Id(agendamento.carro.id)
         val clienteCarroAgendado = agendamentoRepository.findAgendamentoByCliente_Id(agendamento.cliente.id!!)
         carroAgendadoList.map {agendamento1 -> agendamento1.dataHora}.forEach{ data -> if(data == agendamento.dataHora) throw RuntimeException("O carro já está agendado para este horário. Verifique outro horário.") }
         val agendamentoCliente = clienteCarroAgendado.find { agendamento2 -> agendamento2.dataHora == agendamento.dataHora }
@@ -37,7 +37,7 @@ class CriarAgendamentoService(
         if(date.isBefore(LocalDate.now())) throw RuntimeException("O agendamento não pode ocorrer em uma data anterior a hoje.")
         if(time.hour - LocalTime.now().hour > 2) throw RuntimeException("O agendamento não pode ser em menos de 2 horas após sua marcação")
 
-        var dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:SS")
+        val dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:SS")
 
         sendEmail("""
             Obrigado por confiar em nós, ${agendamento.cliente.nome} 
@@ -46,6 +46,7 @@ class CriarAgendamentoService(
             
             Modelo: ${agendamento.carro.modelo}
             Cor: ${agendamento.carro.cor}
+            CPF: ${agendamento.cliente.cpf}
             Data do agendamento: ${agendamento.dataHora.format(dateTimeFormatter)}
         """.trimIndent())
 
