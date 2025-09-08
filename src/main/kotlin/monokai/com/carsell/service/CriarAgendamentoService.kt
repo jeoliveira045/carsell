@@ -19,12 +19,10 @@ import java.time.format.DateTimeFormatter
 @Service
 class CriarAgendamentoService(
     private val agendamentoRepository: AgendamentoRepository,
-    private val carroRepository: CarroRepository,
     private val enviarEmailService: EnviarEmailService
 ) {
 
     fun exec(agendamento: Agendamento): Agendamento {
-        val carro = carroRepository.findById(agendamento.carro.id!!)
         val carroAgendadoList = agendamentoRepository.findAgendamentoByCarro_Id(agendamento.carro.id!!)
         val clienteCarroAgendado = agendamentoRepository.findAgendamentoByCliente_Id(agendamento.cliente.id!!)
         carroAgendadoList.map {agendamento1 -> agendamento1.dataHora}.forEach{ data -> if(data == agendamento.dataHora) throw RuntimeException("O carro já está agendado para este horário. Verifique outro horário.") }
