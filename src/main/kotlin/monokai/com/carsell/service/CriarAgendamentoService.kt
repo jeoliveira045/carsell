@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter
 class CriarAgendamentoService(
     private val agendamentoRepository: AgendamentoRepository,
     private val carroRepository: CarroRepository,
-    private val sesClient: SesClient
+    private val enviarEmailService: EnviarEmailService
 ) {
 
     fun exec(agendamento: Agendamento): Agendamento {
@@ -39,7 +39,7 @@ class CriarAgendamentoService(
 
         var dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:SS")
 
-        sendEmail("""
+        enviarEmailService.sendEmail("""
             Obrigado por confiar em nós, ${agendamento.cliente.nome} 
             
             Segue as informações do carro e do agendamento do test-drive:
@@ -50,45 +50,5 @@ class CriarAgendamentoService(
         """.trimIndent())
 
         return agendamentoRepository.save(agendamento)
-    }
-
-    fun sendEmail(body: String){
-        val from = "jifood12@gmail.com"
-        val to = "jean.mateus.1997@gmail.com"
-        val subject = "Agendamento de test-drive"
-
-        val destination = Destination.builder()
-            .toAddresses(to)
-            .build()
-
-        val subjectContent = Content.builder()
-            .data(subject)
-            .charset("UTF-8")
-            .build()
-
-        val bodyContent = Content.builder()
-            .data(body)
-            .charset("UTF-8")
-            .build()
-
-        val message = Message.builder()
-            .subject(subjectContent)
-            .body(Body.builder().text(bodyContent).build())
-            .build()
-
-        val request = SendEmailRequest.builder()
-            .source(from) // Precisa estar verificado no SES
-            .destination(destination)
-            .message(message)
-            .build()
-
-        try {
-            sesClient.sendEmail(request)
-            println("E-mail enviado com sucesso para $to")
-        } catch (ex: SesException) {
-            println("Erro ao enviar e-mail: ${ex.awsErrorDetails().errorMessage()}")
-            throw ex
-        }
-
     }
 }
