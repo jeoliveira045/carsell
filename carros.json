@@ -1,0 +1,112 @@
+[
+  {
+    "id": null,
+    "marca": "Fiat",
+    "modelo": "Strada",
+    "ano": 2023,
+    "cor": "Branco",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 25000,
+    "preco": 105000.00,
+    "vendido": false
+  },
+  {
+    "id": null,
+    "marca": "Chevrolet",
+    "modelo": "Onix Plus",
+    "ano": 2022,
+    "cor": "Prata",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 45000,
+    "preco": 82500.50,
+    "vendido": true
+  },
+  {
+    "id": null,
+    "marca": "Volkswagen",
+    "modelo": "T-Cross",
+    "ano": 2024,
+    "cor": "Cinza",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 5000,
+    "preco": 140000.00,
+    "vendido": false
+  },
+  {
+    "id": null,
+    "marca": "Hyundai",
+    "modelo": "HB20",
+    "ano": 2021,
+    "cor": "Preto",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 68000,
+    "preco": 75990.00,
+    "vendido": false
+  },
+  {
+    "id": null,
+    "marca": "Jeep",
+    "modelo": "Renegade",
+    "ano": 2020,
+    "cor": "Vermelho",
+    "tipoCombustivel": "Diesel",
+    "quilometragem": 85000,
+    "preco": 115000.00,
+    "vendido": true
+  },
+  {
+    "id": null,
+    "marca": "Toyota",
+    "modelo": "Corolla",
+    "ano": 2024,
+    "cor": "Branco",
+    "tipoCombustivel": "Híbrido",
+    "quilometragem": 12000,
+    "preco": 185000.00,
+    "vendido": false
+  },
+  {
+    "id": null,
+    "marca": "Ford",
+    "modelo": "Ranger",
+    "ano": 2022,
+    "cor": "Azul",
+    "tipoCombustivel": "Diesel",
+    "quilometragem": 95000,
+    "preco": 210000.00,
+    "vendido": false
+  },
+  {
+    "id": null,
+    "marca": "Renault",
+    "modelo": "Duster",
+    "ano": 2019,
+    "cor": "Prata",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 105000,
+    "preco": 78000.00,
+    "vendido": true
+  },
+  {
+    "id": null,
+    "marca": "Honda",
+    "modelo": "HR-V",
+    "ano": 2023,
+    "cor": "Cinza",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 32000,
+    "preco": 155000.00,
+    "vendido": false
+  },
+  {
+    "id": null,
+    "marca": "Nissan",
+    "modelo": "Kicks",
+    "ano": 2021,
+    "cor": "Branco",
+    "tipoCombustivel": "Flex",
+    "quilometragem": 55000,
+    "preco": 108900.00,
+    "vendido": false
+  }
+]
