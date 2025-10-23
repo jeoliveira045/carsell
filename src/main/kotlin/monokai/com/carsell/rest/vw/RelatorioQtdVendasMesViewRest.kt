@@ -1,5 +1,6 @@
 package monokai.com.carsell.rest.vw
 
+import monokai.com.carsell.domain.model.vw.RelatorioQtdVendasMesView
 import monokai.com.carsell.repositories.vw.RelatorioQtdVendasMesViewRepository
 import org.springframework.web.bind.annotation.*
 
@@ -8,5 +9,5 @@ import org.springframework.web.bind.annotation.*
 class RelatorioQtdVendasMesViewRest(private val repository: RelatorioQtdVendasMesViewRepository) {
 
     @GetMapping
-    fun listarTodos() = repository.findAll()
+    fun listarTodos(): MutableList<RelatorioQtdVendasMesView> = repository.findAll()
 }
