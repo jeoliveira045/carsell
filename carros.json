@@ -7,7 +7,7 @@
     "cor": "Branco",
     "tipoCombustivel": "Flex",
     "quilometragem": 25000,
-    "preco": 105000.00,
+    "preco": 95000.00,
     "vendido": false
   },
   {
@@ -29,7 +29,7 @@
     "cor": "Cinza",
     "tipoCombustivel": "Flex",
     "quilometragem": 5000,
-    "preco": 140000.00,
+    "preco": 118000.00,
     "vendido": false
   },
   {
@@ -40,7 +40,7 @@
     "cor": "Preto",
     "tipoCombustivel": "Flex",
     "quilometragem": 68000,
-    "preco": 75990.00,
+    "preco": 72000.00,
     "vendido": false
   },
   {
@@ -62,7 +62,7 @@
     "cor": "Branco",
     "tipoCombustivel": "Híbrido",
     "quilometragem": 12000,
-    "preco": 185000.00,
+    "preco": 98000.00,
     "vendido": false
   },
   {
@@ -73,7 +73,7 @@
     "cor": "Azul",
     "tipoCombustivel": "Diesel",
     "quilometragem": 95000,
-    "preco": 210000.00,
+    "preco": 115000.00,
     "vendido": false
   },
   {
@@ -95,7 +95,7 @@
     "cor": "Cinza",
     "tipoCombustivel": "Flex",
     "quilometragem": 32000,
-    "preco": 155000.00,
+    "preco": 110000.00,
     "vendido": false
   },
   {
@@ -106,7 +106,7 @@
     "cor": "Branco",
     "tipoCombustivel": "Flex",
     "quilometragem": 55000,
-    "preco": 108900.00,
+    "preco": 105000.00,
     "vendido": false
   }
 ]

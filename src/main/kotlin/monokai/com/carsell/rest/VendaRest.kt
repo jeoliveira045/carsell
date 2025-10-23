@@ -1,9 +1,16 @@
 package monokai.com.carsell.rest
 
+import com.fasterxml.jackson.core.JsonParser
+import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import monokai.com.carsell.domain.model.Venda
 import monokai.com.carsell.repositories.VendaRepository
 import monokai.com.carsell.service.SalvarVendaService
 import org.springframework.web.bind.annotation.*
+import java.io.File
 
 @RestController
 @RequestMapping("/vendas")
@@ -29,4 +36,18 @@ class VendaRest(
 
     @DeleteMapping("/{id}")
     fun deletar(@PathVariable id: Long) = repository.deleteById(id)
+
+    @GetMapping("/inserir-dados")
+    fun inserirVendasMockadas(){
+        var om = jacksonObjectMapper().registerModules(JavaTimeModule())
+        var vendas = om.readValue<List<Venda>>(File("vendas.json"))
+        vendas.forEach {
+            salvarVendaService.exec(it)
+        }
+    }
+
+    @DeleteMapping
+    fun deleteAll(){
+        repository.deleteAll()
+    }
 }
