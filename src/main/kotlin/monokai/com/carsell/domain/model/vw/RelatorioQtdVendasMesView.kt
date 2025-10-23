@@ -29,7 +29,7 @@ GROUP BY MES, QTD_VENDAS, month_number
 ORDER BY id
 
 """)
-data class RelatorioDataMesView(
+data class RelatorioQtdVendasMesView(
     @Id
     val id: Long,
     val mes: String,
