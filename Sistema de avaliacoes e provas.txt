@@ -1,0 +1,74 @@
+Objetivo do sistema: Servir como banco de dados de questoes para que os professores possam montar provas e questionarios de forma mais simples e facil.
+Objetivo do sistema 2: Servir como um base para verificar o desempenho dos alunos
+
+Quem sao os atores do sistema
+
+Professor
+Aluno
+Administracao
+
+O problema: Preciso criar uma apostila ou avaliacao para os alunos. Para isso, preciso levantar questoes com base na materia que estao dando em uma determinada escola, em um determinado periodo, para uma determinada turma que esta em um determinado periodo academico. Todas essas variaveis influenciam na questao da apostila. Esse tipo de levantamento requer muito esforco. Outro problema e que o professor nao consegue ter uma perspectiva de como esta o desempenho do aluno sem um lista de parametros clara, o que impede que o aluno possa ser avaliado de forma eficaz.
+
+A solucao: Um sistema que permita que os professores possam montar sua propria base de dados de questoes, permita que questionarios e avaliacoes possam ser criadas com base nesses dados e permita que alunos possam realizar os questionarios e avaliacoes que os professores passarem. A plataforma tambem permitira que o desempenho do aluno seja metrificado com base nas questoes que ele resolver nos questinarios, o que podera suprir o professor com uma base mais solida para avaliar aquele aluno quanto a determinada materia.
+
+Historias de usuario:
+
+Casos de uso
+
+Como professor
+Quero poder preencher a minha base de dados de questoes
+Para poder montar os questionarios e avaliacoes dos meus alunos com base nesses questinarios
+
+Como professor
+Quero quero que o sistema, com base no banco de dados de questoes que forneci, monte os questionarios e avaliacoes com base em um determinado assunto.
+Para poder disponibilizar as avaliacoes e questionarios mais rapido
+
+Como professor
+Quero que o sistema faca a leitura de documentos como provas de concursos, provas de ensino medio e afins
+Para que a base de questoes possa ser criada mais rapido.
+
+Como professor
+Quero estatisticas relacionadas aos meus alunos com base nas avaliacoes e questionarios
+Para acompanhar o desempenho de aluno e verificar se existe algum deficit de forma geral ou em alguma materia ou assunto especifico
+
+Como professor
+Quero que o sistema permita que eu tenha controle do processo de criacao de avaliacoes
+Para garantir que os questionarios e avaliacoes possam ser realizados com base nas politicas de diferentes escolas
+
+(Nao vai ser nessa sprint)
+Como professor
+Quero que o sistema permita que o material de qualquer lingua possa ser acessado para a extracao de dados e alimentacao do banco de dados
+Para abranger ainda mais o banco de questoes
+
+Como aluno
+Quero acessar as avaliacoes dos meus professores
+Para poder para poder dar andamento no processo avaliativo da minha escola
+
+Modelo de classes do sistema:
+
+Avaliacao
+AvaliacaoType(Apostila, Avaliacao, Simulado)
+Materia
+Questao
+Alternativa
+Professor
+Aluno
+
+Tecnologias do projeto:
+
+Conexao com o banco de dados
+Inteligencia artificial
+Conexao via REST-API
+
+Front-end web
+Angular
+Tailwind
+
+Mobile
+Jetpack Compose
+
+
+
+
+
+
